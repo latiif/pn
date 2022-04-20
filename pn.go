@@ -38,7 +38,7 @@ func getInfo(pn string, client *http.Client) (Info, error) {
 	if !personnummer.Valid(pn) {
 		return nothing, invalidPn(pn)
 	}
-	resp, err := client.Get(fmt.Sprintf("https://www.merinfo.se/search?who=%s", pn))
+	resp, err := client.Get(fmt.Sprintf("https://mrkoll.se/resultat?n=%s", pn))
 	if err != nil {
 		return nothing, cannotPerformRequest()
 	}
@@ -52,9 +52,9 @@ func getInfo(pn string, client *http.Client) (Info, error) {
 		return nothing, cannotParseResponse()
 	}
 	return Info{
-		Firstname: htmlquery.InnerText(htmlquery.Find(doc, `/html/body/main/div[1]/div[3]/div[2]/div[3]/div[1]/div/div/div[1]/h2/a/text())`)[0]),
-		Lastname:  htmlquery.InnerText(htmlquery.Find(doc, `/html/body/main/div[1]/div[3]/div[2]/div[3]/div[1]/div/div/div[1]/h2/a/span`)[0]),
-		Address:   htmlquery.InnerText(htmlquery.Find(doc, `/html/body/main/div[1]/div[3]/div[2]/div[3]/div[1]/div/div/div[2]/p[2]`)[0]),
+		Firstname: htmlquery.InnerText(htmlquery.Find(doc, `/html/body/div[2]/div[2]/div/div[2]/div[2]/a/div/div[1]/span[1]/strong`)[0]),
+		Lastname:  htmlquery.InnerText(htmlquery.Find(doc, `/html/body/div[2]/div[2]/div/div[2]/div[2]/a/div/div[1]/strong`)[0]),
+		Address:   htmlquery.InnerText(htmlquery.Find(doc, `/html/body/div[2]/div[2]/div/div[2]/div[2]/a/div/div[1]/span[4]`)[0]),
 	}, nil
 }
 

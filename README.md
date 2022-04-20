@@ -2,7 +2,7 @@
 
 Retrieve information from [Swedish Personal Identity Number (personnummer)](https://en.wikipedia.org/wiki/Personal_identity_number_(Sweden))
 
-This package uses the website [_merinfo.se_](https://www.merinfo.se/) to retrieve: First name, last name and address via the Swedish Personal Identity Number.
+This package uses the website [_mrkoll.se_](https://www.mrkoll.se/) to retrieve: First name, last name and address via the Swedish Personal Identity Number.
 
 ## Disclaimer
 
